@@ -55,7 +55,7 @@ global.botscript = 'https://chat.whatsapp.com/DSoagkSlla0JE5cZzZaiZs' //script l
 global.packname = "𝐅𝖾ᥣ𝗂𝗑 𝐁ⱺ𝗍"
 global.author = "𝐉ⱺ 𝐂ⱺρ𝗒 𝐊𝗂𝗒α 𝐖ⱺɦ 𝐒υα𝗋"
 global.creator = "918127875972@s.whatsapp.net"
-global.xprefix = '.'
+global.xprefix = '!'
 global.premium = ["918127875972"] // Premium User
 
 //bot sett
