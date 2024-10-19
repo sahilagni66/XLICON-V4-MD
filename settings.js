@@ -69,17 +69,6 @@ global.antidelete = false //set anti delete
 global.listv = ['•','●','■','✿','▲','➩','➢','➣','➤','✦','✧','△','❀','○','□','♤','♡','◇','♧','々','〆']
 global.tempatDB = 'database.json'
 
-//---------------------------------------------------------------------------------------//
-//api variables 
-
-global.api = "https://api.maher-zubair.xyz/" ;
-global.id = "RnJlZV9rZXlAc2FsbWFu" ;
-
-//---------------------------------------------------------------------------------------//
-
-
-
-// Description: This file is used to store global variables.
 
 
 global.limit = {
