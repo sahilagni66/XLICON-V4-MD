@@ -44,19 +44,19 @@ global.socialm = "GitHub: salmanytofficial" //ur github or insta name
 global.location = "Pakistan, Lahore, Sabzazar" //ur location
 
 //new
-global.botname = 'XLICON-V4-MD' //ur bot name
-global.ownernumber = ['923184070915'] //ur owner number, dont add more than one
-global.ownername = '𝙎𝙖𝙡𝙢𝙖𝙣 𝘼𝙝𝙢𝙖𝙙' //ur owner name
+global.botname = 'Fꫀׁׅܻᥣׁׅ֪ꪱׁׅ᥊ׁׅ' //ur bot name
+global.ownernumber = ['918127875972'] //ur owner number, dont add more than one
+global.ownername = 'Fꫀׁׅܻᥣׁׅ֪ꪱׁׅ᥊ׁׅ' //ur owner name
 global.websitex = "https://youtube.com/@s4salmanyt"
-global.wagc = "https://whatsapp.com/channel/0029VaINgEZK0IBaK1nDtE3f"
+global.wagc = "https://whatsapp.com/channel"
 global.themeemoji = '⛩'
-global.wm = "Xlicon Bot Inc."
+global.wm = "Shׁׅ֮ɑׁׅ֮hׁׅ֮ꭈׁׅυׁׅƙׁׅ֑hׁׅ֮ ƙׁׅ֑hׁׅ֮ɑׁׅ֮ꪀׁׅ."
 global.botscript = 'https://github.com/salmanytofficial/XLICON-V4-MD' //script link
-global.packname = "𝘼𝙃𝙃𝙈𝙄 𝙆𝙐𝙉"
-global.author = "MΛDΣ BY 𝙎𝘼𝙇𝙈𝘼𝙉 𝘼𝙃𝙈𝘼𝘿"
-global.creator = "923184070915@s.whatsapp.net"
+global.packname = "Fꫀׁׅܻᥣׁׅ֪ꪱׁׅ᥊ׁׅ"
+global.author = "Shׁׅ֮ɑׁׅ֮hׁׅ֮ꭈׁׅυׁׅƙׁׅ֑hׁׅ֮ ƙׁׅ֑hׁׅ֮ɑׁׅ֮ꪀׁׅ"
+global.creator = "918127875972@s.whatsapp.net"
 global.xprefix = '.'
-global.premium = ["923184070915"] // Premium User
+global.premium = ["918127875972"] // Premium User
 
 //bot sett
 global.typemenu = 'v2' // menu type 'v1' => 'v12'
