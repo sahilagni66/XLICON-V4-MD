@@ -4,7 +4,6 @@ const pino = require('pino');
 const path = require('path');
 const axios = require('axios');
 const chalk = require('chalk');
-const figlet = require('figlet');
 const readline = require('readline');
 const FileType = require('file-type');
 const { exec } = require('child_process');
@@ -51,13 +50,16 @@ const { GroupUpdate, GroupParticipantsUpdate, MessagesUpsert, Solving } = requir
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif');
 const { isUrl, generateMessageTag, getBuffer, getSizeMedia, fetchJson, await, sleep } = require('./lib/function');
 
-console.log(chalk.cyan(figlet.textSync("XLICON-V4", {
-    font: 'DOS Rebel',
-    horizontalLayout: 'default',
-    vertivalLayout: 'default',
-    width: 60,
-    whitespaceBreak: false
-})));
+console.log(
+  chalk.cyan(`
+██╗  ██╗██╗      ██████╗██╗ ██████╗ ███╗   ██╗      ██╗   ██╗██╗  ██╗
+╚██╗██╔╝██║     ██╔════╝██║██╔═══██╗████╗  ██║      ██║   ██║██║  ██║
+ ╚███╔╝ ██║     ██║     ██║██║   ██║██╔██╗ ██║█████╗██║   ██║███████║
+ ██╔██╗ ██║     ██║     ██║██║   ██║██║╚██╗██║╚════╝╚██╗ ██╔╝╚════██║
+██╔╝ ██╗███████╗╚██████╗██║╚██████╔╝██║ ╚████║       ╚████╔╝      ██║
+╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝        ╚═══╝       ╚═╝
+  `)
+);
 
 console.log(chalk.white.bold(`${chalk.gray.bold("📃  Information :")}         
 ✉️  Script : XLICON-V4-MD
@@ -65,7 +67,7 @@ console.log(chalk.white.bold(`${chalk.gray.bold("📃  Information :")}
 ✉️  Gmail : salmansheikh2500@gmail.com
 ✉️  Instagram : ahmmikun
 
-${chalk.green.bold("Powered By XLICON BOTZ")}\n`));
+${chalk.green.bold("Ｐｏｗｅｒｅｄ Ｂｙ ＸＬＩＣＯＮ ＢＯＴＺ")}\n`));
 
 async function startXliconBot() {
     //------------------------------------------------------
@@ -101,7 +103,7 @@ async function startXliconBot() {
         if (useMobile) throw new Error('Cannot use pairing code with mobile API');
 
         let phoneNumber;
-        phoneNumber = await question('Please enter your number starting with 92 :\n');
+        phoneNumber = await question('Please enter your number starting with country code like 92:\n');
         phoneNumber = phoneNumber.trim();
 
         setTimeout(async () => {

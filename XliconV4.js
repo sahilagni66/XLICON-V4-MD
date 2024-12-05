@@ -58,12 +58,8 @@ const ytdl = require('@distube/ytdl-core');
 const cron = require('node-cron');
 const cheerio = require('cheerio');
 const request = require('request');
-const maker = require('mumaker');
 const fetch = require('node-fetch');
 const FileType = require('file-type');
-const { JSDOM } = require('jsdom');
-const agent = require('superagent');
-const https = require('https'); 
 const webp = require('node-webpmux');
 const ffmpeg = require('fluent-ffmpeg');
 const speed = require('performance-now');
@@ -75,8 +71,6 @@ const PDFDocument = require("pdfkit");
 const more = String.fromCharCode(8206);
 const readmore = more.repeat(4001);
 const fsx = require('fs-extra');
-const fg = require('api-dylux');
-const { download } = require('aptoide-scraper');
 const scp2 = require('./lib/scraper2');
 const { fetchChapterPages, searchManga } = require('./lib/mangadl');
 const { uploadMedia, handleMediaUpload } = require('./lib/catbox'); 
@@ -1560,6 +1554,8 @@ XliconBotInc.ev.emit('messages.upsert', msg)
 
 switch(isCommand) {
 
+
+
 //---------------------------------------------------------------------------------------------------------------------------//
 
 
@@ -1983,21 +1979,33 @@ await XliconStickWait()
 
 
               case 'pixiv': {
-                if (!text) return replygcxlicon(`Example: ${prefix + command} hello`)
-                try {
-                  let { pixivdl } = require('./lib/pixiv')
-                  let res = await pixivdl(text)
-                  XliconStickWait()
-                  for (let i = 0; i < res.media.length; i++) {
-                    let caption = i == 0 ? `${res.caption}\n\n*By:* ${res.artist}\n*Tags:* ${res.tags.join(', ')}` : ''
-                    let mime = (await FileType.fromBuffer(res.media[i])).mime 
-                    await XliconBotInc.sendMessage(m.chat, { [mime.split('/')[0]]: res.media[i], caption, mimetype: mime }, { quoted: m })
-                  }
-                } catch (e) {
-                  replygcxlicon('Search Not found!')
-                }
-              }
-              break
+    if (!text) return replygcxlicon(`Example: ${prefix + command} furina,10`); // Example usage
+    
+    const [query, limit] = text.split(','); // Split the input by comma
+    let numImages = parseInt(limit) || 5; // Default to 5 if no number is provided
+    numImages = Math.min(numImages, 30); // Ensure the number does not exceed 30
+
+    try {
+        const res = await axios.get(`https://ironman.koyeb.app/ironman/search/pixiv?q=${encodeURIComponent(query)}`);
+        if (!res.data || res.data.length === 0) return replygcxlicon('Not found!');
+        
+        const selectedImages = res.data.sort(() => 0.5 - Math.random()).slice(0, numImages); // Get the specified number of images
+        for (const url of selectedImages) {
+            await XliconBotInc.sendMessage(
+                m.chat,
+                { 
+                    image: { url }, 
+                    caption: `🖼️ *Pixiv Search Result for:* "${query}"` 
+                },
+                { quoted: m }
+            );
+        }
+    } catch (e) {
+        console.log(e.message);
+        replygcxlicon('Not found!');
+    }
+}
+break;
         
               
 //---------------------------------------------------------------------------------------------------------------------------//
@@ -8091,7 +8099,43 @@ case 'autobio':
       process.exit();
       break;
   
-          
+        case 'totalfeature':
+case 'totalfitur': 
+case 'totalcmd': 
+case 'totalcommand': {
+    const xeonfeature = () => {
+        const fs = require('fs'); // Ensure `fs` is required
+        const mytext = fs.readFileSync("./XliconV4.js").toString();
+        const numUpper = (mytext.match(/case '/g) || []).length;
+        return numUpper;
+    };
+    replygcxlicon(`✨🤖 Total Features of *${botname}* is 🛠️ *${xeonfeature()}* 🚀`);
+}
+break;
+
+
+case 'getcases': 
+case 'casenames': {
+  if (!XliconTheCreator) return XliconStickOwner(); // Check if the command is from the owner
+
+  try {
+      const fs = require('fs');
+      const fileContent = fs.readFileSync("XliconV4.js").toString();
+      const caseNames = fileContent
+          .match(/case\s*'([^']+)'/g) // Match all case lines
+          .map(caseLine => caseLine.replace(/case\s*'([^']+)'/, '$1')); // Extract case names
+
+      // Add list symbols before each case
+      const formattedCases = caseNames.map((caseName, index) => `${listv[index % listv.length]} ${caseName}`);
+
+      replygcxlicon(`🗂️ *Available Cases:* \n${formattedCases.join('\n')}`);
+  } catch (err) {
+      replygcxlicon(`❌ Error fetching case names: ${err.message}`);
+  }
+}
+break;
+
+       
          
   case 'delsession': {
     try {
@@ -8120,6 +8164,117 @@ case 'autobio':
     }
   }
   break;
+        
+        
+  case 'update-now': { 
+    if (!XliconTheCreator) { 
+        return replygcxlicon('❌ You are not authorized to use this command.');
+    }
+
+    // Update the paths to writable locations outside the current directory
+    const zipUrl = 'https://github.com/salmanytofficial/XLICON-V4-MD/archive/refs/heads/main.zip';
+    const tempZipPath = path.join(__dirname, '../temp.zip'); // Store in the parent directory
+    const extractPath = path.join(__dirname, '../temp_extract'); // Store in the parent directory
+
+    try {
+        XliconStickWait(); // Show wait sticker
+
+        // Step 1: Download the ZIP file
+        const writer = fs.createWriteStream(tempZipPath);
+        https.get(zipUrl, (response) => response.pipe(writer));
+
+        writer.on('finish', () => {
+            console.log('✅ ZIP file downloaded successfully.');
+
+            // Step 2: Check ZIP file integrity (basic size check)
+            const zipSize = fs.statSync(tempZipPath).size;
+            if (zipSize === 0) {
+                console.error('❌ ZIP file is empty. Aborting extraction.');
+                return replygcxlicon('❌ ZIP file is empty. Please try again later.');
+            }
+
+            // Ensure the extraction directory exists
+            if (!fs.existsSync(extractPath)) {
+                fs.mkdirSync(extractPath, { recursive: true });
+            }
+
+            // Step 3: Extract the ZIP file
+            try {
+                const unzip = unzipper.Extract({ path: extractPath });
+                fs.createReadStream(tempZipPath).pipe(unzip);
+
+                unzip.on('close', () => {
+                    console.log('✅ ZIP file extracted successfully.');
+
+                    // Step 4: Update files
+                    const files = fs.readdirSync(extractPath);
+
+                    for (const file of files) {
+                        const currentPath = path.join(extractPath, file);
+                        const destPath = path.join(__dirname, '../', file); // Adjusted destination path (parent directory)
+
+                        const stat = fs.statSync(currentPath);
+
+                        if (stat.isDirectory()) {
+                            if (!fs.existsSync(destPath)) {
+                                fs.mkdirSync(destPath);
+                            }
+                            const innerFiles = fs.readdirSync(currentPath);
+                            innerFiles.forEach(innerFile => {
+                                const innerFilePath = path.join(currentPath, innerFile);
+                                const innerDestPath = path.join(destPath, innerFile);
+                                fs.copyFileSync(innerFilePath, innerDestPath);
+                                console.log(`Updated: ${innerFile}`);
+                            });
+                        } else {
+                            fs.copyFileSync(currentPath, destPath);
+                            console.log(`Updated: ${file}`);
+                        }
+                    }
+
+                    console.log('✅ Files updated successfully.');
+
+                    // Step 5: Clean up
+                    fs.unlinkSync(tempZipPath);
+                    fs.rmSync(extractPath, { recursive: true, force: true });
+                    console.log('🧹 Temporary files cleaned.');
+
+                    // Step 6: Restart the bot
+                    replygcxlicon('🚀 Bot has been updated. Restarting...');
+                    sleep(3000); // Optional delay before restarting
+                    process.exit();
+                });
+
+                unzip.on('error', (err) => {
+                    console.error('❌ Error during extraction:', err);
+                    if (err.code !== 'FILE_ENDED') {
+                        replygcxlicon('❌ Failed to extract the ZIP. Please try again later.');
+                    }
+                });
+            } catch (extractError) {
+                console.error('❌ Error during extraction process:', extractError);
+                replygcxlicon('❌ Failed to extract the ZIP. Please try again later.');
+            }
+        });
+
+        writer.on('error', (err) => {
+            console.error('❌ Error downloading ZIP:', err);
+            replygcxlicon('❌ Failed to download the ZIP. Please try again later.');
+        });
+
+    } catch (error) {
+        console.error("❌ General error during update process:", error.message);
+        replygcxlicon('❌ An error occurred during the update process.');
+    }
+
+    // Synchronous sleep function
+    function sleep(ms) {
+        const end = Date.now() + ms;
+        while (Date.now() < end) {}
+    }
+}
+break;
+      
   
   case 'update-repo': {
     if (!XliconTheCreator) { 
@@ -18053,144 +18208,6 @@ if (typemenu === 'v1') {
 }
 break
 
-
-case 'nsfwmenu': {
-  
-let xmenu_oh = `
-╭──❍「 🤖 *GREETING* 」❍
-│ ✨ *Hi!* 👋
-│ 🏷️ *Name :* ${m.pushName}
-│ 🎉 ${xliconytimewisher} 😄
-╰─┬────❍ ${readmore}
-╭─┴❍「 🅞 *GUIDE* 」❍
-│ *👑 For Owner* = 🅞
-│ *💸 For Free User* = 🅕
-│ *🌟 For Premium User* = 🅟
-╰─┬────❍
-╭─┴❍「 🔥 *Anime NSFW* 」❍
-│${setv} ${prefix}hentai 🅕
-│${setv} ${prefix}xnxxsearch 🅕
-│${setv} ${prefix}xvideosearch 🅕
-│${setv} ${prefix}xnxxdl 🅕
-│${setv} ${prefix}xvideodl 🅕
-│${setv} ${prefix}gifblowjob 🅕
-│${setv} ${prefix}hentaivid 🅕
-│${setv} ${prefix}hneko 🅕
-│${setv} ${prefix}nwaifu 🅕
-│${setv} ${prefix}animespank 🅕
-│${setv} ${prefix}trap 🅕
-│${setv} ${prefix}blowjob 🅕
-│${setv} ${prefix}cuckold 🅕
-│${setv} ${prefix}milf 🅕
-│${setv} ${prefix}eba 🅕
-│${setv} ${prefix}pussy 🅕
-│${setv} ${prefix}yuri 🅕
-│${setv} ${prefix}zettai 🅕
-╰──────❍`
-if (typemenu === 'v1') {
-  XliconBotInc.sendMessage(m.chat, {
-      image: fs.readFileSync('./XliconMedia/theme/XliconPic.jpg'),
-      caption: xmenu_oh
-  }, {
-      quoted: m
-  })
-} else if (typemenu === 'v2') {
-  XliconBotInc.sendMessage(m.chat, {
-      text: xmenu_oh,
-      contextInfo: {
-          externalAdReply: {
-              showAdAttribution: true,
-              title: botname,
-              body: ownername,
-              thumbnail: fs.readFileSync('./XliconMedia/theme/XliconPic.jpg'),
-              sourceUrl: wagc,
-              mediaType: 1,
-              renderLargerThumbnail: true
-          }
-      }
-  }, {
-      quoted: m
-  })
-} else if (typemenu === 'v3') {
-  XliconBotInc.sendMessage(m.chat, {
-      video: fs.readFileSync('./XliconMedia/theme/Xlicon-Video.mp4'),
-      caption: xmenu_oh
-  }, {
-      quoted: m
-  })
-} else if (typemenu === 'v4') {
-  XliconBotInc.sendMessage(m.chat, {
-      video: fs.readFileSync('./XliconMedia/theme/Xlicon-Video.mp4'),
-      caption: xmenu_oh,
-      gifPlayback: true
-  }, {
-      quoted: m
-  })
-} else if (typemenu === 'v5') {
-  XliconBotInc.relayMessage(m.chat, {
-      requestPaymentMessage: {
-          currencyCodeIso4217: 'USD',
-          amount1000: '9999999900',
-          requestFrom: m.sender,
-          noteMessage: {
-              extendedTextMessage: {
-                  text: xmenu_oh,
-                  contextInfo: {
-                      externalAdReply: {
-                          showAdAttribution: true
-                      }
-                  }
-              }
-          }
-      }
-  }, { quoted: m })
-} else if (typemenu === 'v6') {
-  XliconBotInc.sendMessage(m.chat, {
-      video: fs.readFileSync('./XliconMedia/theme/Xlicon-Video.mp4'),
-      gifPlayback: true,
-      caption: xmenu_oh,
-      contextInfo: {
-          externalAdReply: {
-              title: botname,
-              body: ownername,
-              thumbnailUrl: 'https://i.ibb.co/yhgtCXh/68747470733a2f2f69696c692e696f2f64455433756b582e6d642e706e67.png',
-              sourceUrl: ``,
-              mediaType: 1,
-              renderLargerThumbnail: true
-          }
-      }
-  }, {
-      quoted: m
-  })
-} else if (typemenu === 'v7') {
-  XliconBotInc.sendMessage(m.chat, {
-      video: fs.readFileSync('./XliconMedia/theme/Xlicon-Video.mp4'),
-      caption: xmenu_oh,
-      gifPlayback: true,
-      contextInfo: {
-          forwardingScore: 999,
-          isForwarded: true,
-          mentionedJid: [sender],
-          forwardedNewsletterMessageInfo: {
-              newsletterName: ownername,
-              newsletterJid: "120363232303807350@newsletter",
-          },
-          externalAdReply: {
-              showAdAttribution: true,
-              title: ownername,
-              body: botname,
-              thumbnailUrl: "https://i.ibb.co/y0nLDSB/XLICON-IMG.jpg",
-              sourceUrl: websitex,
-              mediaType: 1,
-              renderLargerThumbnail: true
-          }
-      }
-  }, {
-      quoted: m
-  })
-}
-}
-break
 
 
 case 'databasemenu': {

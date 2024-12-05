@@ -1,26 +1,16 @@
- 
-
-# `XLICON-V4-MD`
-<br>
-<br>
-   
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a><a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
+                                        
 
 ![Typing SVG](https://readme-typing-svg.demolab.com?font=Ribeye&size=50&pause=1000&color=A93226&center=true&width=900&height=100&lines=Its%20XLICON-V4-MD;%20Multi-Device%20WhatsApp%20Bot;%20Developed%20By%20SALMAN%20AHMAD)
 <p align="center">
-  
->XLICON-V4-MD is based on :
->- [Cheems V15](https://github.com/DGXeon) by [DGXeon](https://github.com/DGXeon) (License: Apache License 2.0)
->
-> :unicorn: Don't forget to check out! :point_right: [Cheems V15](https://github.com/DGXeon)
-</p>
 
-## 🌟 `Bot Intro and Features`
+
 <p align="center">  
   <a href="https://youtube.com/@s4salmanyt">
     <img alt="Xlicon" height="600" width="600" src="https://iili.io/dET3ukX.md.png">
     <h1 align="center">XLICON-V4</h1>
   </a>
-</p>
+</p>   
 
 
 <p align="center">
@@ -48,9 +38,12 @@ XLICON-V4 is a Cool Multi-Device WhatsApp bot developed by [Salman Ahamed](https
   
 ####
 
-*XLICON-V4* - A Advanced Multi Device whatsapp bot Based on *CHEEMS V15*
--------
-
+  
+>XLICON-V4-MD is based on :
+>- [Cheems V15](https://github.com/DGXeon) by [DGXeon](https://github.com/DGXeon) (License: Apache License 2.0)
+>
+> :unicorn: Don't forget to check out! :point_right: [Cheems V15](https://github.com/DGXeon)
+</p>
 ***
 
 ## ⭐ `Star This Repo`
@@ -86,6 +79,9 @@ Click On The Link To Donate ME...
 | Bot Cantrol Commands             | Cantrol Bot Without Opening Deploy Platform             | ✅           | 3.0        |
 | Various Games                    | Enjoy a variety of games within the bot                 | ✅           | 3.0        |
 | Audio/Video Editor Commands      | Edit audio and video files with bot commands            | ✅           | 3.0        |
+
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a><a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
+   
 
 ## 🛠️ `Installation Methods`
 1. Fork the repo
@@ -185,11 +181,17 @@ Click On The Link To Donate ME...
     <br>
 <a href='https://dashboard.render.com' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/DEPLOY -h?color=black&style=for-the-badge&logo=render' width="96.35" height="28"/></a></p>
 
+
 ## 🎇 `NEW DEPLOYMENT`
 NOW Deploy👇
 <br>
 ## DEPLOY IN KOYEB    
 [![Deploy on Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/auth/signup)  
+ 
+
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a><a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
+   
+ 
 
 # `TUTORIALS`
 
@@ -209,7 +211,8 @@ NOW Deploy👇
 <div><button id="boton" type="button">Base  - By CHEEMS BOTZ</button></div>
 <a href="https://github.com/DGXeon"><img src="https://github.com/DGXeon.png" width="150" height="150" alt="Xeon"/></a>
 
-
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a><a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
+  
 ## 📛 `OWNER & Main Developer` 
 <a href="https://github.com/salmanytofficial"><img src="https://github.com/salmanytofficial.png" width="250" height="250" alt="Salman Ahmad"/></a>
   
@@ -224,8 +227,15 @@ NOW Deploy👇
 <br>
 `Maintainence , Feature Testing`
 
+## 🦁 `Contributer` 
+<a href="https://github.com/Kingbega"><img src="https://github.com/Kingbega.png" width="250" height="250" alt="Baraka Bega"/></a>
+  
+**XLICON-V4** - By `Baraka Bega`
+<br>
+`Maintainence , Plugins Editor`
 
--------
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a><a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
+  
 
 ## 🌈 `Support Us`
 - **Mail Us:** [salmansheikh2500@gmail.com](mailto:salmansheikh2500@gmail.com)
@@ -373,6 +383,6 @@ npm start
 - Don't Forget to Give Credits If you are using or Reuploading My Plugins/files
 - Have A Good Day Ahead
 - Don't Use This Script As Your Bot Base 
----
 
- <br><br>
+ 
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a><a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
