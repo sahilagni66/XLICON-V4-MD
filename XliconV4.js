@@ -4419,6 +4419,10 @@ case 'song': {
     // Extract details from the API response
     const { title, dl } = response.data.data;
 
+    // Prepare message with audio details
+    const audioDetails = `🎶 *Title:* _${title}_\n` +
+                         `🔗 *Link:* _${video.url}_`;
+	  
     // Send audio details
     await replygcxlicon(audioDetails);
 
