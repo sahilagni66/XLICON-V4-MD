@@ -1,3 +1,6 @@
+# ℹ️ **This Project is open for contributions**
+## `I myself no more working on this project but you developers can run it and make it more cool.` <br> `Just Do Pull Request and you can even change README.md File`
+
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a><a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
                                         
 
@@ -90,7 +93,7 @@ Click On The Link To Donate ME...
 
 2. Get SESSION_ID (SERVER 1)
     <br>
-<a href='https://xliconbotpair-433b7fa85b89.herokuapp.com/' target="_blank"><img alt='SESSION ID' src='https://img.shields.io/badge/Session_id-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=black&color=black'/></a>
+<a href='https://xlicon-v4-3728d17afb96.herokuapp.com/' target="_blank"><img alt='SESSION ID' src='https://img.shields.io/badge/Session_id-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=black&color=black'/></a>
 
 2. Get CREDS.JSON (SERVER 2)
     <br>
@@ -226,13 +229,6 @@ NOW Deploy👇
 **XLICON-V4** - By `IRON-M4N`
 <br>
 `Maintainence , Feature Testing`
-
-## 🦁 `Contributer` 
-<a href="https://github.com/Kingbega"><img src="https://github.com/Kingbega.png" width="250" height="250" alt="Baraka Bega"/></a>
-  
-**XLICON-V4** - By `Baraka Bega`
-<br>
-`Maintainence , Plugins Editor`
 
   
 ## 🤴 `Contributer` 
